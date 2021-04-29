@@ -1,0 +1,25 @@
+
+// Override the css to change the background color of boolean toggle widget from gray to Light green
+div.o_boolean_toggle.custom-control.custom-checkbox {
+    $circle-width: 25px;
+    > input.custom-control-input:checked + label.custom-control-label {
+        &::before {
+                    background-color: #00FF00 !important;
+                   }
+    }
+//      > label.custom-control-label {
+//      &::before {
+//                 content:'OFF';
+//                 }
+//      }
+//      > input.custom-control-input:checked + label.custom-control-label {
+//      &::before {
+//                 content:'ON';
+//                 }
+//      }
+
+}
+
+.o_external_custom_button{
+    background-color: #00FF00 !important;
+}

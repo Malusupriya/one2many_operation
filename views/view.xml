@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="view_order_form_js_changes" model="ir.ui.view">
+            <field name="name">view_order_form_js_changes</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="is_toggle_boolean" widget="boolean_toggle"/>
+                    <field name="is_toggle_boolean_with_css_changes" widget="custom_boolean_toggle"/>
+                </xpath>
+
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="options">{'custom_search': True}</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']" position="attributes">
+                    <attribute name="options">{'custom_visible': True}</attribute>
+                </xpath>
+                <xpath expr="//page[@name='order_lines']" position="after">
+                    <page name="product_ids" string="Custom Products">
+                        <field name="product_ids" options="{'custom_visible': True}">
+                            <tree editable="bottom">
+                                <field name="name"/>
+                                <field name="type"/>
+                                <field name="categ_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <template id="pop_up_message" name="Backend Assets (used in backend interface)" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <!--Importing JS files-->
+                <script type="text/javascript" src="/js_training/static/src/js/alert_message.js"></script>
+                <script type="text/javascript" src="/js_training/static/src/js/boolean_toggle.js"></script>
+                <script type="text/javascript" src="/js_training/static/src/js/relational_fields.js"></script>
+                <script type="text/javascript" src="/js_training/static/src/js/controller.js"></script>
+                <script type="text/javascript" src="/js_training/static/src/js/list_renderer.js"></script>
+                <!--Importing Scss Files-->
+                <link rel="stylesheet" type="text/scss" href="/js_training/static/src/scss/custom_css.scss"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>
